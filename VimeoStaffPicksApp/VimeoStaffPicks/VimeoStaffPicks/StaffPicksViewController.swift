@@ -25,6 +25,8 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
         self.title = "Staff Picks"
         
         self.setUpTableView()
+        
+        self.refreshItems()
     }
 
     // mark: SETUP
@@ -49,6 +51,12 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
 
         
         return cell
+    }
+    
+    func refreshItems() {
+        VimeoClient.staffpicks { (object, error) -> Void in
+            println("error: \(error) \n object: \(object) ")
+        }
     }
     
 }
