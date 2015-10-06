@@ -13,8 +13,8 @@ class ViewCell: UITableViewCell {
     var task: NSURLSessionDataTask?
 
     
-    @IBOutlet var nameLabel: UILabel?
-    @IBOutlet var durationLabel: UILabel?
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var durationLabel: UILabel?
     @IBOutlet weak var videoImageView: UIImageView?
     
     var video: Video? {
