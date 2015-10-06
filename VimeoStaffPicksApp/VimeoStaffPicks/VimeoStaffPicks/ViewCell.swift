@@ -11,6 +11,7 @@ import UIKit
 class ViewCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel?
+    @IBOutlet var durationLabel: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
