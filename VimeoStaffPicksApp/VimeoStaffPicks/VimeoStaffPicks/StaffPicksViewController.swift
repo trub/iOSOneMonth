@@ -12,7 +12,7 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView?
     
-    let items = ["alfie","lee","mattan","syd","zach", "adlknsadlknsaldknaslkdnasdlnsaldknas"]
+    var items: Array<Video> = []
     
     //mark: View Lifecycle
 
@@ -40,14 +40,19 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
     // mark: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //returns number of rows needed per data returned
         return self.items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        //source of location that provides data to table
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(ViewCell.self)) as! ViewCell
         
-        cell.nameLabel?.text = self.items[indexPath.row]
+        // extract video from self.items at indexPath.row
+        let video = self.items[indexPath.row]
+        cell.nameLabel?.text = video.name
 
         
         return cell
@@ -59,10 +64,11 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
             //if constVideo is equal to videos then...
             if let constVideos = videos {
                 
-                //print the name of every video
-                for video: Video in constVideos {
-                    print(video.name)
-                }
+               //make it equal to list of videos we return from api
+               self.items = constVideos
+            
+                //table view refresh to load new data returned into cells
+                self.tableView?.reloadData()
             }
         }
     }
