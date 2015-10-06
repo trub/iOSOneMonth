@@ -5,7 +5,6 @@
 //  Created by Matthew Weintrub on 10/2/15.
 //  Copyright (c) 2015 matthew weintrub. All rights reserved.
 //
-
 import UIKit
 
 class StaffPicksViewController: UIViewController, UITableViewDataSource {
@@ -14,11 +13,12 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
     
     var items: Array<Video> = []
     
+    
     //mark: View Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         // Do any additional setup after loading the view.
         
@@ -28,7 +28,8 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
         
         self.refreshItems()
     }
-
+    
+    
     // mark: SETUP
     
     func setUpTableView() {
@@ -37,39 +38,44 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
         self.tableView?.registerNib(nib, forCellReuseIdentifier: NSStringFromClass(ViewCell.self))
     }
     
+    
     // mark: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //returns number of rows needed per data returned
+        
         return self.items.count
     }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //source of location that provides data to table
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(ViewCell.self)) as! ViewCell
-        
-        //get the video and let the cell configure itself
         let video = self.items[indexPath.row]
         cell.video = video
-                
+        
         return cell
     }
+
     
     func refreshItems() {
         VimeoClient.staffpicks { (videos, error) -> Void in
-       
+            
             //if constVideo is equal to videos then...
             if let constVideos = videos {
                 
-               //make it equal to list of videos we return from api
-               self.items = constVideos
-            
-                //table view refresh to load new data returned into cells
-                self.tableView?.reloadData()
+                //print the name of every video
+                for video: Video in constVideos {
+//                    print(video.name)
+                    
+                    self.items = constVideos
+                    self.tableView?.reloadData()
+                }
             }
         }
     }
     
 }
+
+
+
+
