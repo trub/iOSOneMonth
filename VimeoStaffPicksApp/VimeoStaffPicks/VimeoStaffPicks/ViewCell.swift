@@ -10,10 +10,15 @@ import UIKit
 
 class ViewCell: UITableViewCell {
     
+    var task: NSURLSessionDataTask?
+
+    
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var durationLabel: UILabel?
+    @IBOutlet weak var videoImageView: UIImageView?
     
     var video: Video? {
+        
         didSet {
             
             //if the video object was set to somethting, grab that something to configure name & duration labels
@@ -31,6 +36,36 @@ class ViewCell: UITableViewCell {
                     self.durationLabel?.text = "nope"
                 }
                 
+                if let constImageURLString = constVideo.imageURLString {
+                    
+                    let url = NSURL(string: constImageURLString)!
+                    self.task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {( data, response, error) -> Void in
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            
+                            self.task = nil
+                            
+                            if let constData = data {
+                                
+                                let image = UIImage(data:constData)
+                                self.videoImageView?.image = image
+                                
+                            }
+                            else {
+                                
+                                // TODO: alert the user?
+                                
+                            }
+                            
+                        })
+                        
+                    })
+                    
+                    self.task?.resume()
+                    
+                }
+                
+                
             }
 
         }
@@ -39,6 +74,10 @@ class ViewCell: UITableViewCell {
     override func prepareForReuse() {
         self.nameLabel?.text = ""
         self.durationLabel?.text = ""
+//        self.videoImageView?.image = nil
+//        self.task?.cancel()
+//        self.task = nil
     }
     
 }
+

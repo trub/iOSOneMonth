@@ -13,15 +13,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK9-hS-dHu">
-                        <rect key="frame" x="10" y="62" width="42" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK9-hS-dHu">
+                        <rect key="frame" x="10" y="61" width="42" height="20.5"/>
                         <color key="backgroundColor" red="0.1552635732323232" green="0.1552635732323232" blue="0.1552635732323232" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.83611505681818188" green="0.83611505681818188" blue="0.83611505681818188" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82c-Vi-QUN">
-                        <rect key="frame" x="270" y="61" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82c-Vi-QUN">
+                        <rect key="frame" x="268" y="61.5" width="42" height="20.5"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.22" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,7 +34,7 @@
                     <constraint firstItem="82c-Vi-QUN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rK9-hS-dHu" secondAttribute="trailing" constant="10" id="GPN-XB-NlU"/>
                     <constraint firstAttribute="bottom" secondItem="82c-Vi-QUN" secondAttribute="bottom" constant="10" id="Njg-Cq-FEz"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rK9-hS-dHu" secondAttribute="trailing" constant="10" id="bhb-St-V0X"/>
-                    <constraint firstAttribute="trailing" secondItem="82c-Vi-QUN" secondAttribute="trailing" constant="10" id="eYv-Ge-Qbp"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="82c-Vi-QUN" secondAttribute="trailing" constant="10" id="eYv-Ge-Qbp"/>
                     <constraint firstItem="rK9-hS-dHu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="iRJ-OH-AHu"/>
                 </constraints>
                 <variation key="default">
@@ -45,8 +45,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="0.77838523242418434" blue="0.55484222965984875" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
-                <outlet property="durationLabel" destination="82c-Vi-QUN" id="gar-5o-g4j"/>
-                <outlet property="nameLabel" destination="rK9-hS-dHu" id="tq2-Vu-RcC"/>
+                <outlet property="durationLabel" destination="82c-Vi-QUN" id="9pE-P5-BvP"/>
+                <outlet property="nameLabel" destination="rK9-hS-dHu" id="NhD-LO-7L3"/>
             </connections>
             <point key="canvasLocation" x="287" y="273.5"/>
         </tableViewCell>
