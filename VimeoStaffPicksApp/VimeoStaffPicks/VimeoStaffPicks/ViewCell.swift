@@ -12,16 +12,33 @@ class ViewCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var durationLabel: UILabel?
+    
+    var video: Video? {
+        didSet {
+            
+            //if the video object was set to somethting, grab that something to configure name & duration labels
+            if let constVideo = video {
+                
+                self.nameLabel?.text = constVideo.name
+                
+                if let constDuration = constVideo.duration {
+                    
+                    self.durationLabel?.text = "\(constDuration)"
+                    
+                }
+                    
+                else {
+                    self.durationLabel?.text = "nope"
+                }
+                
+            }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+        }
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override func prepareForReuse() {
+        self.nameLabel?.text = ""
+        self.durationLabel?.text = ""
     }
     
 }

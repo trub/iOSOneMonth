@@ -50,20 +50,10 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
         //source of location that provides data to table
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(ViewCell.self)) as! ViewCell
         
-        // extract video from self.items at indexPath.row
+        //get the video and let the cell configure itself
         let video = self.items[indexPath.row]
-        cell.nameLabel?.text = video.name
-        
-        if let constDuration = video.duration {
-        
-        cell.durationLabel?.text = "\(constDuration)"
-            
-        }
-        
-        else {
-            cell.durationLabel?.text = "nope"
-        }
-        
+        cell.video = video
+                
         return cell
     }
     
