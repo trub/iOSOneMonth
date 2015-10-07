@@ -7,6 +7,8 @@
 //
 
 import Foundation
+//add UIKit so we can use UIScreen class to inspect the screen (retina, reglr, etc)
+import UIKit
 
 class Video {
     
@@ -30,10 +32,25 @@ class Video {
             if let constSizes = sizes {
                 
                 if constSizes.count > 0 {
-                    var picture = constSizes[0]
                     
-                    //grab the image url
-                    self.imageURLString = picture["link"] as? String
+                    //add UIKit so we can use UIScreen class to inspect the screen (retina, reglr, etc) and calculate the width*scale to know if we should pull in a different photo based on screen size
+                    let screenWdith = UIScreen.mainScreen().bounds.size.width * UIScreen.mainScreen().scale
+                    
+                    //run filter function on the array containing our picture sizes
+                    let variableSizes = constSizes.filter({$0["width"] as? CGFloat >= screenWdith})
+                    
+                    if variableSizes.count > 0 {
+                        
+                        let selectedSize = variableSizes[0]
+                        
+                        self.imageURLString = selectedSize["link"] as? String
+                    }
+                    
+                    else {
+                        //use ! on last so we know it won't be an optional
+                        let selectedSize = constSizes.last!
+                        self.imageURLString = selectedSize["link"] as? String
+                    }
                     
                 }
             }
