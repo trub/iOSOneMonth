@@ -39,18 +39,26 @@ class ViewCell: UITableViewCell {
                 if let constImageURLString = constVideo.imageURLString {
                     
                     let url = NSURL(string: constImageURLString)!
-                    self.task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {( data, response, error) -> Void in
+                    self.task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {[weak self]( data, response, error) -> Void in
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             
-                            self.task = nil
-                            
-                            if let constData = data {
+                            if let strongSelf = self {
                                 
-                                let image = UIImage(data:constData)
-                                self.videoImageView?.image = image
+                                if constImageURLString != strongSelf.video?.imageURLString {
+                                    
+                                    return
+                                }
                                 
+                                strongSelf.task = nil
+                                
+                                if data != nil {
+                                    
+                                    let image = UIImage(data:data)
+                                    strongSelf.imageView?.image = image
+                                }
                             }
+
                             else {
                                 
                                 // TODO: alert the user?
@@ -71,12 +79,20 @@ class ViewCell: UITableViewCell {
         }
     }
     
+    //
+    deinit {
+        
+        self.task?.cancel()
+        self.task = nil
+        
+    }
+    
     override func prepareForReuse() {
         self.nameLabel?.text = ""
         self.durationLabel?.text = ""
-//        self.videoImageView?.image = nil
-//        self.task?.cancel()
-//        self.task = nil
+        self.videoImageView?.image = nil
+        self.task?.cancel()
+        self.task = nil
     }
     
 }

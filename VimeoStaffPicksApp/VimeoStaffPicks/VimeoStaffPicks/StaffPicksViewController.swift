@@ -58,18 +58,28 @@ class StaffPicksViewController: UIViewController, UITableViewDataSource {
     }
     
     func refreshItems() {
-        VimeoClient.staffpicks { (videos, error) -> Void in
-       
-            //if constVideo is equal to videos then...
+        
+        VimeoClient.staffpicks {(videos, error) -> Void in
+            
             if let constVideos = videos {
                 
-               //make it equal to list of videos we return from api
-               self.items = constVideos
-            
-                //table view refresh to load new data returned into cells
-                self.tableView?.reloadData()
+                for video: Video in constVideos {
+                    
+                    self.items = constVideos
+                    self.tableView?.reloadData()
+                    
+                }
+                
             }
+                
+            else {
+                
+                // TODO: alert the user
+                
+            }
+            
         }
+        
     }
     
 }
