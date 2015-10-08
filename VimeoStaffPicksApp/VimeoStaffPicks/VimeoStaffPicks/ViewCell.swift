@@ -21,17 +21,13 @@ class ViewCell: UITableViewCell {
         
         didSet {
             
-            //if the video object was set to somethting, grab that something to configure name & duration labels
             if let constVideo = video {
                 
                 self.nameLabel?.text = constVideo.name
                 
                 if let constDuration = constVideo.duration {
-                    
                     self.durationLabel?.text = constDuration
-                    
                 }
-                    
                 else {
                     self.durationLabel?.text = "00:00"
                 }
@@ -39,14 +35,14 @@ class ViewCell: UITableViewCell {
                 if let constImageURLString = constVideo.imageURLString {
                     
                     let url = NSURL(string: constImageURLString)!
-                    self.task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {[weak self]( data, response, error) -> Void in
+                    
+                    self.task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { [weak self] ( data, response, error) -> Void in
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             
                             if let strongSelf = self {
                                 
                                 if constImageURLString != strongSelf.video?.imageURLString {
-                                    
                                     return
                                 }
                                 
@@ -54,32 +50,33 @@ class ViewCell: UITableViewCell {
                                 
                                 if data != nil {
                                     
-                                    let image = UIImage(data:data)
-                                    strongSelf.imageView?.image = image
+                                    let image = UIImage(data: data)
+                                    strongSelf.videoImageView?.image = image
+                                    
                                 }
-                            }
-
-                            else {
-                                
-                                // TODO: alert the user?
+                                    
+                                else {
+                                    
+                                    // TODO: alert the user?
+                                    
+                                }
                                 
                             }
                             
                         })
                         
-                    })
+                        })
                     
                     self.task?.resume()
                     
                 }
                 
-                
             }
-
+            
         }
+        
     }
     
-    //
     deinit {
         
         self.task?.cancel()
@@ -88,12 +85,14 @@ class ViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        
+        self.video = nil
         self.nameLabel?.text = ""
         self.durationLabel?.text = ""
         self.videoImageView?.image = nil
         self.task?.cancel()
         self.task = nil
+        
     }
     
 }
-

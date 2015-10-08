@@ -44,6 +44,8 @@ class VimeoClient {
                     return
                 }
                 
+                
+                //SWIFT 2.0
                 //                var JSON: Dictionary<String,AnyObject>? = nil
                 
                 //                do {
