@@ -28,12 +28,12 @@ class ViewCell: UITableViewCell {
                 
                 if let constDuration = constVideo.duration {
                     
-                    self.durationLabel?.text = "\(constDuration)"
+                    self.durationLabel?.text = constDuration
                     
                 }
                     
                 else {
-                    self.durationLabel?.text = "nope"
+                    self.durationLabel?.text = "00:00"
                 }
                 
                 if let constImageURLString = constVideo.imageURLString {
