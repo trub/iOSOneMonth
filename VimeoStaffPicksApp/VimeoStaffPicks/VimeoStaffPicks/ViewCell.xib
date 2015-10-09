@@ -14,18 +14,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c6E-md-wKu">
-                        <rect key="frame" x="0.0" y="0.5" width="320" height="92.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK9-hS-dHu">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK9-hS-dHu">
                         <rect key="frame" x="10" y="62" width="42" height="20.5"/>
-                        <color key="backgroundColor" red="0.1552635732323232" green="0.1552635732323232" blue="0.1552635732323232" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.1552635732323232" green="0.1552635732323232" blue="0.1552635732323232" alpha="0.58999999999999997" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.83611505681818188" green="0.83611505681818188" blue="0.83611505681818188" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82c-Vi-QUN">
                         <rect key="frame" x="268" y="62" width="42" height="20.5"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.22" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -35,9 +35,9 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="rK9-hS-dHu" secondAttribute="bottom" constant="10" id="32k-Z0-JTK"/>
                     <constraint firstItem="c6E-md-wKu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9xS-LP-ayy"/>
+                    <constraint firstItem="82c-Vi-QUN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rK9-hS-dHu" secondAttribute="trailing" constant="10" id="CSk-ru-5JG"/>
                     <constraint firstAttribute="bottom" secondItem="82c-Vi-QUN" secondAttribute="bottom" constant="10" id="Njg-Cq-FEz"/>
                     <constraint firstItem="c6E-md-wKu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XlA-Wh-1KU"/>
-                    <constraint firstItem="82c-Vi-QUN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rK9-hS-dHu" secondAttribute="trailing" constant="10" id="azr-u5-69H"/>
                     <constraint firstAttribute="trailing" secondItem="82c-Vi-QUN" secondAttribute="trailing" constant="10" id="eYv-Ge-Qbp"/>
                     <constraint firstItem="rK9-hS-dHu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="iRJ-OH-AHu"/>
                     <constraint firstAttribute="bottom" secondItem="c6E-md-wKu" secondAttribute="bottom" id="ruP-HL-P34"/>
